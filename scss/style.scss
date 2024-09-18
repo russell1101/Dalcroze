@@ -337,6 +337,12 @@ header {
     // position: relative;
     overflow: hidden;
     @extend %flex-center;
+    flex-direction: column;
+    gap: 50px;
+
+    h1{
+        color: $dark;
+    }
 
     // .colorRcorner {
     //     position: absolute;

@@ -52,6 +52,11 @@ $(function () {
         $('html,body').animate({ scrollTop: 0 }, 1000);
     });
 
+    $('#home').click(function () {
+        // 會寫html,body 是因為不同瀏覽器的卷軸可能寫在其中之一的位置 所以兩個都寫才能確保都吃到
+        $('html,body').animate({ scrollTop: 0 }, 1000);
+    });
+
     // 至頂按鈕淡出淡入
     $(window).scroll(function () {
         if ($(this).scrollTop() > 200) {

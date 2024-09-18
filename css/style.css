@@ -262,6 +262,11 @@ header .carousel-item {
   height: 100vh;
   z-index: -1;
   overflow: hidden;
+  flex-direction: column;
+  gap: 50px;
+}
+#course h1 {
+  color: #414143;
 }
 #course .course_content {
   width: 100%;
