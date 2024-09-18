@@ -4,12 +4,11 @@ $main-font: "Catamaran";
 // 字級規範
 $font-size: (
     // map-get($font-size , )
-    s: 14px,
     p:14px,
-    m: 1.3rem,
+    s: 16px,
+    m: 1.8rem,
     l: 2rem,
     xl: 3rem,
-    xxl: 30px
 );
 // 字重規範
 $font-weight: (
@@ -24,4 +23,4 @@ $letter-spacing: (
 
 $line-height: (
     p:30px
-    );
+);

@@ -1,3 +1,4 @@
+// 首頁scale縮放
 window.addEventListener('scroll', function () {
     const header = document.querySelector('header');
     const scrollY = window.scrollY || window.pageYOffset; // 獲取滾動距離
@@ -7,12 +8,8 @@ window.addEventListener('scroll', function () {
 
     // 應用縮放效果
     header.style.transform = `scale(${scale})`;
-
-    // 如果滾動到一定程度，可以設定其他過渡到 faith 區域的效果
-    if (scrollY > header.offsetHeight) {
-        // 可以在這裡做其他的過渡效果
-    }
 });
+
 
 
 // 滑入動畫
@@ -21,13 +18,13 @@ $('.smoove').smoove({
     offset: '20%'
 });
 
-$('.smoove-z').smoove({
-    // -500會先後退500 然後往前 反之500先前在後退
-    moveZ: '-500px',
-    rotateX: '90deg',
-    // y軸設定是為了在翻轉時不要蓋到上面的div 所以讓元素下移
-    moveY: '250px'
-});
+// $('.smoove-z').smoove({
+//     // -500會先後退500 然後往前 反之500先前在後退
+//     moveZ: '-500px',
+//     rotateX: '90deg',
+//     // y軸設定是為了在翻轉時不要蓋到上面的div 所以讓元素下移
+//     moveY: '250px'
+// });
 
 // 換頁與 gotop
 $(function () {
@@ -36,11 +33,18 @@ $(function () {
         let btn = $(this).attr('href');
         // 變數不用'' 除非要抓html中的才要
         let pos = $(btn).offset();
-        let offset = 175;
+        // 1000毫秒 等於 1秒  scrolltop表示卷軸位置
+        $('html,body').animate({ scrollTop: pos.top }, 1000);
+    });
+
+    $('.faithbtn').click(function () {
+        let btn = $(this).attr('href');
+        // 變數不用'' 除非要抓html中的才要
+        let pos = $(btn).offset();
+        let offset = 200;
         // 1000毫秒 等於 1秒  scrolltop表示卷軸位置
         $('html,body').animate({ scrollTop: pos.top + offset }, 1000);
     });
-
 
     // 滑動至頂
     $('#gotop').click(function () {
