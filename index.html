@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dalcroze</title>
+    <link rel="icon" href="./favicon.png">
+
+    <!-- boostrap css cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./css/style.min.css">
+</head>
+
+<body>
+    <div class="stonebg"></div>
+    <nav id="topbar">
+        <img src="./img/topbar_logo.png" alt="">
+        <div id="nav">
+            <ul class="menu">
+                <li><a href="#faith">教學理念</a></li>
+                <li><a href="#">理事長介紹</a></li>
+                <li><a href="#">課程介紹</a></li>
+                <li><a href="#">研習活動</a></li>
+                <li><a href="#">聯絡我們</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <header id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-pause="fales"
+            data-bs-interval="3500">
+            <!-- <div class="overlay"></div> -->
+
+            <!-- 張數提示 -->
+            <div class="carousel-indicators">
+                <!-- aria無障礙 data-bs給js用的 -->
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                    aria-label="Slide 4"></button>
+            </div>
+            <!-- 圖片區 -->
+            <div class="carousel-inner mask-tilt">
+                <!-- 第一張 -->
+                <div class="carousel-item active">
+                    <img src="./img/home/carousel-1.JPG" class="d-block w-100" alt="...">
+                    <!-- 文字區 -->
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>sone representative placeholder content for the first slide.</p>
+                    </div>
+                </div>
+                <!-- 第二張 -->
+                <div class="carousel-item">
+                    <img src="./img/home/carousel-2.JPG" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>sone representative placeholder content for the second slide.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="./img/home/carousel-3.JPG" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Thrid slide label</h5>
+                        <p>sone representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="./img/home/carousel-4.JPG" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Fourth slide label</h5>
+                        <p>sone representative placeholder content for the fourth slide.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </header>
+
+        <section id="faith">
+            <div class="faith_content">
+                <div class="text">
+                    <h1>教學理念</h1>
+                    <h3>達克羅士音樂節奏教學法(Dalcroze Eurhythmics) <br>
+                        為世界五大音樂教學法之一(其中奧福、柯大宜及戈登均受其影響)<br>
+                        且為其中歷史最悠久者<br>
+                        「音感訓練」、「音樂節奏律動」、「即興」<br>
+                        強調肌肉覺、視覺、感覺、知覺與心智等多元發展統合的課程訓練中<br>
+                        培養出學生的高度專注力、判斷力、記憶力及瞬間反應能力</h3>
+                </div>
+                <div class="img">
+                    <div class="triangle-container">
+                        <div class="circle circle1 smoove" data-move-y="150px" data-move-x="0px">
+                            <h2>Solfège <br>
+                                「音感訓練」</h2>
+                        </div>
+                        <div class="circle circle2 smoove"  data-move-x="100px" data-move-y="-100px">
+                            <h2>Eurhythmics <br>
+                                「音樂節奏律動」</h2>
+                        </div>
+                        <div class="circle circle3 smoove" data-move-x="-100px" data-move-y="-100px">
+                            <h2>Improvisation <br>
+                                「即興」</h2>
+                        </div>
+                        <div class="circle circle4 smoove">
+                            <h2>Plastique Animée <br>
+                                「聞樂起舞」</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="doll_1"><img src="./img/decoration/doll-1.svg" alt="跳舞娃娃"></div>
+            <div class="doll_2"><img src="./img/decoration/doll-2.svg" alt="跳舞娃娃"></div>
+        </section>
+
+    </main>
+
+
+    <footer>
+        <div id="gotop"><img src="./img/arrow-up.svg" alt="goTop"></div>
+    </footer>
+
+    <!-- boostrap js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- jQuery原始碼 只能選用一個版本套用 不可重複使用 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!--  此為smoove網址 要做什麼效果可以參照 https://smoove.js.org/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smoove/0.2.10/jquery.smoove.min.js"></script>
+    <!-- 自己的js -->
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

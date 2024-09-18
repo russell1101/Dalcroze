@@ -1,0 +1,8 @@
+@mixin base-img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+@mixin bordered ($width , $color) {
+    border: $width solid $color;
+}

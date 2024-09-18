@@ -1,0 +1,209 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+TC:wght@100..900&display=swap");
+/* 重置所有標籤的樣式 */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+/* 重置字體 */
+body {
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.5;
+}
+
+/* 重置標題 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+/* 重置列表 */
+ul, ol {
+  list-style: none;
+}
+
+/* 重置圖片 */
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 重置連接 */
+a {
+  display: block;
+  text-decoration: none;
+}
+
+#faith, #faith .faith_content, #faith .faith_content .text, #faith .faith_content .img, #faith .faith_content .img .triangle-container .circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial, "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+  font-size: 100%;
+  line-height: 1.5;
+}
+
+.stonebg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200vh;
+  z-index: -1;
+  background-image: linear-gradient(to bottom, rgba(193, 193, 193, 0.6) 0%, rgba(193, 193, 193, 0.6) 80%, #E1DCD9 100%), url(../img/stonebg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#topbar {
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  padding: 25px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #f1f1f1;
+}
+#topbar img {
+  width: 120px;
+  height: 74px;
+}
+#topbar #nav ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 25px;
+}
+#topbar #nav ul li a {
+  font-size: 14px;
+  color: #f1f1f1;
+}
+
+header {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+header .carousel img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+header .carousel .carousel-item {
+  height: 100vh;
+}
+
+#faith {
+  height: 150vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  /* 裝飾娃娃 */
+}
+#faith .faith_content {
+  margin: 0 75px;
+  width: 100%;
+  padding: 50px;
+}
+#faith .faith_content .text {
+  width: 50%;
+  flex-direction: column;
+}
+#faith .faith_content .text h1 {
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+#faith .faith_content .text h3 {
+  font-size: 14px;
+  letter-spacing: 5px;
+  text-align: center;
+  line-height: 30px;
+}
+#faith .faith_content .img {
+  width: 50%;
+}
+#faith .faith_content .img .triangle-container {
+  position: relative;
+  width: 500px;
+  min-width: 450px;
+  /* Fixed width */
+  height: 450px;
+  /* Fixed height */
+}
+#faith .faith_content .img .triangle-container .circle {
+  width: 150px;
+  /* Fixed width */
+  height: 150px;
+  /* Fixed height */
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2392156863);
+  position: absolute;
+}
+#faith .faith_content .img .triangle-container .circle h2 {
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
+}
+#faith .faith_content .img .triangle-container .circle1 {
+  top: 0;
+  left: 50%;
+  transform: translatex(-50%);
+}
+#faith .faith_content .img .triangle-container .circle2 {
+  bottom: 0;
+  left: 0;
+}
+#faith .faith_content .img .triangle-container .circle3 {
+  bottom: 0;
+  right: 0;
+}
+#faith .faith_content .img .triangle-container .circle4 {
+  width: 175px;
+  height: 175px;
+  top: 57%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#faith .doll_1 {
+  position: absolute;
+  left: -50px;
+  bottom: -5px;
+  /* 設定寬 高會自動縮放 */
+  width: 300px;
+}
+#faith .doll_2 {
+  position: absolute;
+  right: -50px;
+  bottom: 400px;
+  width: 200px;
+}
+
+/* 頁尾曲 */
+footer #gotop {
+  position: fixed;
+  z-index: 999;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  background-color: #414143;
+  border-radius: 50%;
+  padding: 5px;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,22 @@
+// 圖片數列
+// $banner-1: ( banner1-mario, banner1-luigi, banner1-brick-row );
+// $banner-2: ( banner2-mario, banner2-peach, banner2-brick-pipe );
+// $banner-3: ( banner3-mario, banner3-toad, banner3-star );
+
+// 寬度規範
+$main-w: 80%;
+
+// 間距規範
+$interval: ( // map-get($interval , )
+    menu: 0 10px,
+    bar: 20px 50px,
+    btn-xy: 10px 20px,
+    btn-y: 30px 0
+);
+
+// 圓角
+$radius-infinity: 99px;
+$radius-card: 10px;
+
+// 轉場
+$base-speed: .4s ease-in-out;

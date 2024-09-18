@@ -1,0 +1,27 @@
+// 字體規範
+$main-font: "Catamaran";
+
+// 字級規範
+$font-size: (
+    // map-get($font-size , )
+    s: 14px,
+    p:14px,
+    m: 1.3rem,
+    l: 2rem,
+    xl: 3rem,
+    xxl: 30px
+);
+// 字重規範
+$font-weight: (
+    // map-get($font-weight , )
+    bolder: 900,
+    bold: 700
+);
+
+$letter-spacing: (
+    p:5px
+);
+
+$line-height: (
+    p:30px
+    );
