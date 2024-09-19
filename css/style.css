@@ -268,6 +268,7 @@ header .carousel-item {
   gap: 50px;
 }
 #course h1 {
+<<<<<<< HEAD
   font-size: 1.8rem;
   color: #4E4E4E;
 }
@@ -279,6 +280,9 @@ header .carousel-item {
   height: 500px;
   z-index: -1;
   transform: rotate(-5deg);
+=======
+  color: #414143;
+>>>>>>> 4955ad3ec25f7cb2486b19ecf5205cbabad9045b
 }
 #course .course_content {
   width: 100%;
