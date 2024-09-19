@@ -114,3 +114,30 @@ var swiper = new Swiper('.swiper-container', {
     loopAdditionalSlides: 1, // 確保額外的循環卡片數量，避免漏顯
     loopedSlides: 3, // 指定循環的卡片數量，與 slidesPerView 保持一致
 });
+
+
+window.addEventListener('scroll', function () {
+    const topbar = document.getElementById('topbar');
+    const scrollY = window.scrollY; // 獲取滾動距離
+    const triggerHeight = 200; // 設定在 200px 時改變顏色
+
+    if (scrollY > triggerHeight) {
+        // 滾動超過指定高度時改變背景顏色
+        topbar.style.backgroundColor = 'rgba(0, 0, 0, 0.8)'; // 深色背景
+        topbar.style.transition = 'background-color 0.3s ease'; // 漸變效果
+    } else {
+        // 滾動回到上方時恢復背景顏色
+        topbar.style.backgroundColor = 'transparent'; // 透明背景
+    }
+
+    // 偵測背景顏色為淺色時，自動變深色
+    const backgroundColor = window.getComputedStyle(document.body).backgroundColor;
+    const rgb = backgroundColor.match(/\d+/g);
+    const brightness = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255; // 計算亮度
+
+    if (brightness > 0.5) { // 如果背景顏色明亮
+        topbar.style.backgroundColor = 'rgba(0, 0, 0, 0.8)'; // 變為深色
+    } else {
+        topbar.style.backgroundColor = 'transparent'; // 保持透明
+    }
+});
