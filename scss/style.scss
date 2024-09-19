@@ -340,13 +340,6 @@ header {
     @extend %flex-center;
     flex-direction: column;
     gap: 50px;
-<<<<<<< HEAD
-=======
-
-    h1{
-        color: $dark;
-    }
->>>>>>> 4955ad3ec25f7cb2486b19ecf5205cbabad9045b
 
     h1 {
         font-size: map-get($font-size , m);
