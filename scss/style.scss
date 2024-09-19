@@ -152,6 +152,7 @@ header {
     @extend %flex-center;
     position: relative;
     overflow: hidden;
+    color: $dark;
 
     .faith_content {
         margin: 0 75px;
@@ -251,7 +252,7 @@ header {
         width: 200px;
     }
 
-    .blobs {
+    .blobs_1 {
         position: absolute;
         right: -300px;
         bottom: -1450px;
@@ -262,7 +263,8 @@ header {
 
 // 理事長介紹
 #chairman {
-    height: 100vh;
+    border-radius: 0 0 30px 30px;
+    height: 150vh;
     background-color: #E1DCD9;
     @extend %flex-center;
     position: relative;
@@ -270,10 +272,10 @@ header {
 
     .colorblock {
         position: absolute;
-        top: 6vh;
-        left: 34%;
-        width: 850px;
-        height: 750px;
+        top: 33vh;
+        left: 30%;
+        width: 900px;
+        height: 700px;
         z-index: -1;
     }
 
@@ -283,6 +285,7 @@ header {
         justify-content: space-between;
         align-items: flex-start;
         padding: 0 15%;
+        position: relative;
 
         .profile {
             width: 300px;
@@ -331,22 +334,27 @@ header {
 
 // 課程區
 #course {
-    background-color: #D8D8D8;
-    height: 100vh;
-    z-index: -1;
-    // position: relative;
+    height: 150vh;
+    position: relative;
     overflow: hidden;
     @extend %flex-center;
+    flex-direction: column;
+    gap: 50px;
 
-    // .colorRcorner {
-    //     position: absolute;
-    //     top: -10vh;
-    //     right: -8%;
-    //     width: 900px;
-    //     height: 500px;
-    //     z-index: -1;
-    //     transform: rotate(-5deg);
-    // }
+    h1 {
+        font-size: map-get($font-size , m);
+        color: $dark;
+    }
+
+    .colorRcorner {
+        position: absolute;
+        top: -10vh;
+        right: -8%;
+        width: 900px;
+        height: 500px;
+        z-index: -1;
+        transform: rotate(-5deg);
+    }
 
     .course_content {
         width: 100%;
@@ -382,11 +390,8 @@ header {
 
                 h2 {
                     color: $light;
-                    /* 確保 $light 在其他地方定義 */
                     font-size: map-get($font-size, s);
-                    /* 確保 $font-size 在其他地方定義 */
                     letter-spacing: map-get($letter-spacing, s);
-                    /* 確保 $letter-spacing 在其他地方定義 */
                     text-align: center;
                 }
             }
@@ -413,11 +418,6 @@ header {
             &:hover::before {
                 transform: translateY(0);
             }
-
-            // &:hover .dark {
-            //     transform: translate(-50%, -100%);
-            //     /* 將原本的 .dark 向上推 */
-            // }
         }
 
         .card-1 {
@@ -449,6 +449,99 @@ header {
                 font-weight: 400;
             }
         }
+    }
+
+    .blobs_2 {
+        position: absolute;
+        right: -300px;
+        bottom: -490px;
+        width: 2500px;
+    }
+}
+
+
+#activity {
+    background-color: #D8D8D8;
+    height: 150vh;
+    position: relative;
+    overflow: hidden;
+    @extend %flex-center;
+
+    /* Swiper 容器大小 */
+    .swiper-container {
+        width: 100%;
+        max-width: 1200px;
+        height: 600px;
+        margin: auto;
+        padding: 40px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* 每個卡片的樣式 */
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        width: 500px;
+        height: 100%;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        font-size: 1.5rem;
+    }
+
+    /* 調整進度條的樣式，並將其移到下方 */
+    .swiper-pagination {
+        position: absolute;
+        bottom: 10px;
+        left: 40px;
+        /* 左右側給進度條和箭頭間的空間 */
+        right: 40px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        /* 進度條之間的間距 */
+    }
+
+    /* 進度條的顏色與形狀 */
+    .swiper-pagination-bullet {
+        width: 5px;
+        height: 10px;
+        background-color: #ccc;
+        /* 默認淡灰色 */
+        opacity: 1;
+        border-radius: 0;
+        /* 設置為直立長方形 */
+    }
+
+    /* 當前進度條的顏色 */
+    .swiper-pagination-bullet-active {
+        background-color: #555;
+        /* 深灰色 */
+    }
+
+    /* 左右箭頭導航樣式 */
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: #555;
+        /* 箭頭顏色 */
+        width: 10px;
+        /* 與進度條大小相似 */
+        height: 20px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+
+    /* 左右箭頭位置，與進度條對齊 */
+    .swiper-button-prev {
+        left: 10px;
+    }
+
+    .swiper-button-next {
+        right: 10px;
     }
 }
 

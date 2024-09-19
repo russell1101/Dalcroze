@@ -1,13 +1,31 @@
 // 首頁scale縮放
 window.addEventListener('scroll', function () {
     const header = document.querySelector('header');
-    const scrollY = window.scrollY || window.pageYOffset; // 獲取滾動距離
+    const chairman = document.querySelector('#chairman');
+    const scrollY = window.scrollY; // 獲取滾動距離
+
 
     // 設定最大縮小比例，根據滾動量調整縮放
-    const scale = Math.max(0.95, 1 - (scrollY / 1000));
+    const scale = Math.max(0.95, 1 - (scrollY / 1000));;
+    const borderRadius = Math.min(30, (scrollY / 100) * 30);
 
-    // 應用縮放效果
+    // 應用縮放效果和圓角變化
     header.style.transform = `scale(${scale})`;
+    header.style.borderRadius = `${borderRadius}px`;
+
+    // 計算 chairman 區塊的 4/5 位置
+    const chairmanHeight = window.innerHeight * 1.5; // chairman 的高度是 150vh
+    const chairmanOffsetTop = chairman.offsetTop;
+    const triggerPoint = chairmanOffsetTop + chairmanHeight * 0.4; // 4/5 的位置
+
+    if (scrollY >= triggerPoint) {
+        // 在滾動到 chairman 的 4/5 高度後開始縮放
+        const chairmanScale = Math.max(0.85, 1 - ((scrollY - triggerPoint) / 3000));
+        chairman.style.transform = `scale(${chairmanScale})`;
+    } else {
+        // 在 4/5 高度之前保持原始大小
+        chairman.style.transform = 'scale(1)';
+    }
 });
 
 
@@ -61,3 +79,41 @@ $(function () {
         }
     });
 })
+
+
+
+var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 3, // 一次顯示3個卡片
+    spaceBetween: 10, // 卡片之間的間隔
+    centeredSlides: true, // 中間的卡片居中
+    loop: true, // 循環播放
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true, // 進度條點擊
+        bulletClass: 'swiper-pagination-bullet', // 自定義進度條樣式
+        bulletActiveClass: 'swiper-pagination-bullet-active', // 當前進度條樣式
+    },
+    autoplay: {
+        delay: 2500, // 自動播放間隔時間
+        disableOnInteraction: false, // 使用者交互後不禁用自動播放
+    },
+    grabCursor: true, // 滑鼠變為抓取手勢
+    effect: 'coverflow', // 使用 coverflow 效果
+    coverflowEffect: {
+        rotate: 0, // 卡片不旋轉
+        stretch: 0, // 每個卡片之間的拉伸程度
+        depth: 300, // 景深距離
+        modifier: 1, // 視差效果強度
+        slideShadows: false, // 不顯示陰影
+        scale: 1.2, // 中間卡片放大
+    },
+    navigation: {
+        nextEl: '.swiper-button-next', // 右側箭頭
+        prevEl: '.swiper-button-prev', // 左側箭頭
+    },
+    slideToClickedSlide: true, // 點擊卡片時跳轉到該卡片
+
+    // 修正問題的重點：確保左右出現卡片數量一致
+    loopAdditionalSlides: 1, // 確保額外的循環卡片數量，避免漏顯
+    loopedSlides: 3, // 指定循環的卡片數量，與 slidesPerView 保持一致
+});

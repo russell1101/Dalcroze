@@ -38,7 +38,7 @@ a {
   text-decoration: none;
 }
 
-#faith, #faith .faith_content, #faith .faith_content .text, #faith .faith_content .img, #faith .faith_content .img .triangle-container .circle, #chairman, #chairman .profile_content, #course, #course .course_content {
+#faith, #faith .faith_content, #faith .faith_content .text, #faith .faith_content .img, #faith .faith_content .img .triangle-container .circle, #chairman, #chairman .profile_content, #course, #course .course_content, #activity {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +86,7 @@ body {
   gap: 25px;
 }
 #topbar #nav ul li a {
-  font-size: 16px;
+  font-size: 18px;
   color: #f1f1f1;
 }
 
@@ -113,6 +113,7 @@ header .carousel-item {
   width: 100%;
   position: relative;
   overflow: hidden;
+  color: #4E4E4E;
   /* 裝飾娃娃 */
 }
 #faith .faith_content {
@@ -129,7 +130,7 @@ header .carousel-item {
   margin-bottom: 40px;
 }
 #faith .faith_content .text h3 {
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 5px;
   text-align: center;
   line-height: 30px;
@@ -155,7 +156,7 @@ header .carousel-item {
   position: absolute;
 }
 #faith .faith_content .img .triangle-container .circle h2 {
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
   margin: 0;
 }
@@ -192,7 +193,7 @@ header .carousel-item {
   bottom: 550px;
   width: 200px;
 }
-#faith .blobs {
+#faith .blobs_1 {
   position: absolute;
   right: -300px;
   bottom: -1450px;
@@ -200,17 +201,18 @@ header .carousel-item {
 }
 
 #chairman {
-  height: 100vh;
+  border-radius: 0 0 30px 30px;
+  height: 150vh;
   background-color: #E1DCD9;
   position: relative;
   z-index: -1;
 }
 #chairman .colorblock {
   position: absolute;
-  top: 6vh;
-  left: 34%;
-  width: 850px;
-  height: 750px;
+  top: 33vh;
+  left: 30%;
+  width: 900px;
+  height: 700px;
   z-index: -1;
 }
 #chairman .profile_content {
@@ -218,6 +220,7 @@ header .carousel-item {
   justify-content: space-between;
   align-items: flex-start;
   padding: 0 15%;
+  position: relative;
 }
 #chairman .profile_content .profile {
   width: 300px;
@@ -245,7 +248,7 @@ header .carousel-item {
   margin: 0;
 }
 #chairman .profile_content .profile_text p {
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 5px;
   line-height: 30px;
 }
@@ -258,10 +261,24 @@ header .carousel-item {
 }
 
 #course {
-  background-color: #D8D8D8;
-  height: 100vh;
-  z-index: -1;
+  height: 150vh;
+  position: relative;
   overflow: hidden;
+  flex-direction: column;
+  gap: 50px;
+}
+#course h1 {
+  font-size: 1.8rem;
+  color: #4E4E4E;
+}
+#course .colorRcorner {
+  position: absolute;
+  top: -10vh;
+  right: -8%;
+  width: 900px;
+  height: 500px;
+  z-index: -1;
+  transform: rotate(-5deg);
 }
 #course .course_content {
   width: 100%;
@@ -296,11 +313,8 @@ header .carousel-item {
 }
 #course .course_content .mycard .dark h2 {
   color: #f1f1f1;
-  /* 確保 $light 在其他地方定義 */
-  font-size: 16px;
-  /* 確保 $font-size 在其他地方定義 */
+  font-size: 18px;
   letter-spacing: 7px;
-  /* 確保 $letter-spacing 在其他地方定義 */
   text-align: center;
 }
 #course .course_content .mycard::before {
@@ -347,6 +361,88 @@ header .carousel-item {
   content: "針對60歲以上樂齡族群提供樂齡音樂教學";
   font-size: 16px;
   font-weight: 400;
+}
+#course .blobs_2 {
+  position: absolute;
+  right: -300px;
+  bottom: -490px;
+  width: 2500px;
+}
+
+#activity {
+  background-color: #D8D8D8;
+  height: 150vh;
+  position: relative;
+  overflow: hidden;
+  /* Swiper 容器大小 */
+  /* 每個卡片的樣式 */
+  /* 調整進度條的樣式，並將其移到下方 */
+  /* 進度條的顏色與形狀 */
+  /* 當前進度條的顏色 */
+  /* 左右箭頭導航樣式 */
+  /* 左右箭頭位置，與進度條對齊 */
+}
+#activity .swiper-container {
+  width: 100%;
+  max-width: 1200px;
+  height: 600px;
+  margin: auto;
+  padding: 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+#activity .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  width: 500px;
+  height: 100%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  font-size: 1.5rem;
+}
+#activity .swiper-pagination {
+  position: absolute;
+  bottom: 10px;
+  left: 40px;
+  /* 左右側給進度條和箭頭間的空間 */
+  right: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  /* 進度條之間的間距 */
+}
+#activity .swiper-pagination-bullet {
+  width: 5px;
+  height: 10px;
+  background-color: #ccc;
+  /* 默認淡灰色 */
+  opacity: 1;
+  border-radius: 0;
+  /* 設置為直立長方形 */
+}
+#activity .swiper-pagination-bullet-active {
+  background-color: #555;
+  /* 深灰色 */
+}
+#activity .swiper-button-prev,
+#activity .swiper-button-next {
+  color: #555;
+  /* 箭頭顏色 */
+  width: 10px;
+  /* 與進度條大小相似 */
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+#activity .swiper-button-prev {
+  left: 10px;
+}
+#activity .swiper-button-next {
+  right: 10px;
 }
 
 /* 頁尾曲 */
