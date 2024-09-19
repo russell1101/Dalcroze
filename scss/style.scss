@@ -14,42 +14,6 @@ body {
 }
 
 // 背景區
-// .stonebg {
-//     position: fixed;
-//     /* 固定位置 */
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 200vh;
-//     z-index: -1;
-// }
-
-// .stonebg::before {
-//     content: '';
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     background-image: url(../img/stonebg.jpg);
-//     background-size: cover;
-//     z-index: -1;
-//     /* 背景圖片的透明度 */
-//     opacity: 0.5;
-// }
-
-// .stonebg::after {
-//     content: '';
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     /* 疊加的顏色，透明度 60% */
-//     background-color: rgba(193, 193, 193, 0.6);
-//     z-index: 0;
-// }
-
 .stonebg {
     position: fixed;
     top: 0;
@@ -323,6 +287,7 @@ header {
         }
 
         h2 {
+            color: $dark;
             font-size: map-get($font-size, m);
             writing-mode: vertical-rl;
             /* 將文字方向變為垂直從右到左 */
@@ -397,6 +362,7 @@ header {
             }
 
             &::before {
+                padding: 30px;
                 text-align: center;
                 position: absolute;
                 bottom: 0;
@@ -421,7 +387,7 @@ header {
         }
 
         .card-1 {
-            background-image: url(../img/course/child.JPG);
+            background-image: url(../img/course/child.jpeg);
 
             &::before {
                 content: "針對5-15歲學童進行設計教學";
@@ -432,16 +398,17 @@ header {
 
         .card-2 {
             background-image: url(../img/course/teacher.jpg);
+            background-position: bottom;
 
             &::before {
-                content: "針對在職教師或對於音樂教學有興趣者，提供專屬課程";
+                content: "針對在職教師或對於音樂教學有興趣者提供專屬課程";
                 font-size: 16px;
                 font-weight: 400;
             }
         }
 
         .card-3 {
-            background-image: url(../img/course/elderly.jpg);
+            background-image: url(../img/course/elderly.jpeg);
 
             &::before {
                 content: "針對60歲以上樂齡族群提供樂齡音樂教學";
@@ -466,82 +433,176 @@ header {
     position: relative;
     overflow: hidden;
     @extend %flex-center;
+    flex-direction: column;
+
+    h1 {
+        color: $dark;
+        font-size: map-get($font-size , m);
+    }
 
     /* Swiper 容器大小 */
     .swiper-container {
         width: 100%;
         max-width: 1200px;
         height: 600px;
-        margin: auto;
         padding: 40px 0;
         position: relative;
         overflow: hidden;
-    }
 
-    /* 每個卡片的樣式 */
-    .swiper-slide {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #fff;
-        width: 500px;
-        height: 100%;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
-        font-size: 1.5rem;
-    }
+        /* 每個卡片的樣式 */
+        .swiper-slide {
+            @extend %flex-center;
+            position: relative;
+            width: 500px;
+            height: 100%;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            transition: transform 0.5s ease, background-size 0.5s ease;
+            /* 縮放動畫 */
 
-    /* 調整進度條的樣式，並將其移到下方 */
-    .swiper-pagination {
-        position: absolute;
-        bottom: 10px;
-        left: 40px;
-        /* 左右側給進度條和箭頭間的空間 */
-        right: 40px;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        /* 進度條之間的間距 */
-    }
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 1;
+                transition: background-color 0.5s ease;
+                /* 遮罩透明度變化動畫 */
+            }
 
-    /* 進度條的顏色與形狀 */
-    .swiper-pagination-bullet {
-        width: 5px;
-        height: 10px;
-        background-color: #ccc;
-        /* 默認淡灰色 */
-        opacity: 1;
-        border-radius: 0;
-        /* 設置為直立長方形 */
-    }
+            // 背景圖片縮放效果
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: inherit;
+                /* 繼承背景圖片 */
+                background-position: center;
+                background-size: cover;
+                z-index: 0;
+                /* 在遮罩下面 */
+                transition: transform 0.5s ease;
+                /* 背景縮放動畫 */
+            }
 
-    /* 當前進度條的顏色 */
-    .swiper-pagination-bullet-active {
-        background-color: #555;
-        /* 深灰色 */
-    }
+            &:hover {
+                &::before {
+                    background-color: rgba(0, 0, 0, 0);
+                    /* 讓遮罩逐漸變透明 */
+                }
 
-    /* 左右箭頭導航樣式 */
-    .swiper-button-prev,
-    .swiper-button-next {
-        color: #555;
-        /* 箭頭顏色 */
-        width: 10px;
-        /* 與進度條大小相似 */
-        height: 20px;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-    }
+                &::after {
+                    transform: scale(1.1);
+                    /* 放大背景圖片 */
+                }
+            }
 
-    /* 左右箭頭位置，與進度條對齊 */
-    .swiper-button-prev {
-        left: 10px;
-    }
+            /* 當前顯示在最中間的卡片沒有遮罩 */
+            &.swiper-slide-active {
 
-    .swiper-button-next {
-        right: 10px;
+                /* 縮小背景圖片 */
+                &::before {
+                    background-color: rgba(0, 0, 0, 0);
+                    /* 去除遮罩效果 */
+                }
+            }
+
+            h2 {
+                position: absolute;
+                bottom: 20px;
+                font-size: map-get($font-size , s);
+                letter-spacing: map-get($letter-spacing , p);
+                color: $light;
+                z-index: 2;
+            }
+        }
+
+
+        /* 調整進度條的樣式，並將其移到下方 */
+        .swiper-pagination {
+            position: absolute;
+            bottom: 10px;
+            left: 40px;
+            /* 左右側給進度條和箭頭間的空間 */
+            right: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            /* 進度條之間的間距 */
+        }
+
+        /* 進度條的顏色與形狀 */
+        .swiper-pagination-bullet {
+            width: 5px;
+            height: 10px;
+            background-color: #ccc;
+            /* 默認淡灰色 */
+            opacity: 1;
+            border-radius: 0;
+            /* 設置為直立長方形 */
+        }
+
+        /* 當前進度條的顏色 */
+        .swiper-pagination-bullet-active {
+            background-color: #555;
+            /* 深灰色 */
+        }
+
+        /* 左右箭頭導航樣式 */
+        .swiper-button-prev,
+        .swiper-button-next {
+            color: $light;
+            /* 箭頭顏色 */
+            width: 10px;
+            /* 與進度條大小相似 */
+            height: 20px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .slide_1 {
+            background-image: url(../img/activity/activity-1.jpg);
+        }
+
+        .slide_2 {
+            background-image: url(../img/activity/activity-2.jpeg);
+        }
+
+        .slide_3 {
+            background-image: url(../img/activity/activity-3.jpeg);
+        }
+
+        .slide_4 {
+            background-image: url(../img/activity/activity-4.jpeg);
+        }
+
+        .slide_5 {
+            background-image: url(../img/activity/activity-5.jpeg);
+        }
+
+        .slide_6 {
+            background-image: url(../img/activity/activity-6.jpeg);
+        }
+
+        .slide_7 {
+            background-image: url(../img/activity/activity-7.jpg);
+        }
+
+        .slide_8 {
+            background-image: url(../img/activity/activity-8.jpg);
+        }
     }
 }
 

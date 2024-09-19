@@ -51,15 +51,7 @@ $(function () {
         let btn = $(this).attr('href');
         // 變數不用'' 除非要抓html中的才要
         let pos = $(btn).offset();
-        // 1000毫秒 等於 1秒  scrolltop表示卷軸位置
-        $('html,body').animate({ scrollTop: pos.top }, 1000);
-    });
-
-    $('.faithbtn').click(function () {
-        let btn = $(this).attr('href');
-        // 變數不用'' 除非要抓html中的才要
-        let pos = $(btn).offset();
-        let offset = 200;
+        let offset = 170;
         // 1000毫秒 等於 1秒  scrolltop表示卷軸位置
         $('html,body').animate({ scrollTop: pos.top + offset }, 1000);
     });
