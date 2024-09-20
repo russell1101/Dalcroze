@@ -26,6 +26,53 @@ window.addEventListener('scroll', function () {
         // 在 4/5 高度之前保持原始大小
         chairman.style.transform = 'scale(1)';
     }
+
+
+    const sections = document.querySelectorAll('section'); // 獲取所有 section
+    const topbar = document.getElementById('topbar');
+    const menuLinks = document.querySelectorAll('.menu a'); // 獲取 menu 的所有連結
+    const scrollPosition = window.scrollY + 100; // 當前滾動位置，增加 100 以考慮視窗的 offset
+    const headerHeight = header.offsetHeight; // 獲取 header 的實際高度
+
+    let activeSection = ''; // 儲存當前可見的 section 的 id
+
+    // 當滾動位置在 header 區域時，移除所有 active 樣式
+    if (scrollPosition < headerHeight) {
+        topbar.style.backgroundColor = 'transparent'; // 背景透明
+    } else {
+        // 超過 header 之後，開始判斷當前的 active section
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+
+            // 判斷滾動位置是否在該 section 內
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                activeSection = section.getAttribute('id');
+
+                // 根據 section 設定不同的 topbar 背景色
+                if (activeSection === 'faith') {
+                    topbar.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+                } else if (activeSection === 'chairman') {
+                    topbar.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                } else if (activeSection === 'course') {
+                    topbar.style.backgroundColor = 'transparent';
+                } else if (activeSection === 'activity') {
+                    topbar.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+                } else {
+                    topbar.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+                }
+            }
+        });
+
+        // 依據 activeSection 設定相應的 active 樣式
+        menuLinks.forEach(link => {
+            if (link.getAttribute('href').includes(activeSection)) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
 });
 
 
@@ -104,51 +151,4 @@ var swiper = new Swiper('.swiper-container', {
 
     loopAdditionalSlides: 1, // 確保額外的循環卡片數量，避免漏顯
     loopedSlides: 3, // 指定循環的卡片數量，與 slidesPerView 保持一致
-});
-
-
-window.addEventListener('scroll', function () {
-    const sections = document.querySelectorAll('section'); // 獲取所有 section
-    const topbar = document.getElementById('topbar');
-    const menuLinks = document.querySelectorAll('.menu a'); // 獲取 menu 的所有連結
-    const scrollPosition = window.scrollY + 100; // 當前滾動位置，增加 100 以考慮視窗的 offset
-
-    let activeSection = ''; // 儲存當前可見的 section 的 id
-
-    // 如果滾動位置小於 100，回到 header，讓 topbar 背景透明
-    if (scrollPosition < 1000) {
-        topbar.style.backgroundColor = 'transparent';
-    } else {
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-
-            // 判斷滾動位置是否在該 section 內
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                activeSection = section.getAttribute('id');
-
-                // 根據 section 設定不同的 topbar 背景色
-                if (activeSection === 'faith') {
-                    topbar.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
-                } else if (activeSection === 'chairman') {
-                    topbar.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-                } else if (activeSection === 'course') {
-                    topbar.style.backgroundColor = 'transparent';
-                } else if (activeSection === 'activity') {
-                    topbar.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-                } else {
-                    topbar.style.backgroundColor = 'rgba(0, 0, 0, 1)';
-                }
-            }
-        });
-    }
-
-    // 依據 activeSection 設定相應的底線樣式
-    menuLinks.forEach(link => {
-        if (link.getAttribute('href').includes(activeSection)) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
 });

@@ -37,6 +37,7 @@ body {
     top: 0;
     left: 0;
     position: fixed;
+    height: 80px;
     width: 100%;
     z-index: 3;
     padding: 25px 40px;
@@ -63,33 +64,37 @@ body {
 
             li {
                 a {
-                    font-size: map-get($font-size , s);
+                    font-size: map-get($font-size, s);
                     color: $light;
                     text-decoration: none;
-                    padding-bottom: 5px;
-                    transition: border-bottom 0.3s ease;
-                }
+                    padding-bottom: 2px;
+                    border-bottom: 2px solid transparent; // 預設為透明，避免推動內容
+                    transition: border-bottom 0.5s ease-in-out;
 
-                a.avtive {
-                    border-bottom: 2px solid #333;
-                    /* 當前 section 的底線樣式 */
+                    &.active {
+                        border-bottom: 2px solid $light; // 當前 section 的底線樣式
+                    }
+
+                    &:hover {
+                        border-bottom: 2px solid $light; // hover 時變化為顯示的底線
+                    }
                 }
             }
         }
     }
 }
 
-// 
-// .overlay {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     background-color: rgba(0, 0, 0, 0.749); // 深色透明 overlay
-//     z-index: 1;
-//     pointer-events: none;
-// }
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); // 深色透明 overlay
+    z-index: 1;
+    pointer-events: none;
+}
 
 // .mask-tilt{
 //     z-index: 2;
@@ -118,6 +123,19 @@ header {
 
     .carousel-item {
         height: 100vh;
+    }
+
+    .carousel-caption {
+        z-index: 2;
+    }
+
+    h3 {
+        color: $light;
+        font-size: map-get($font-size , p);
+        letter-spacing: map-get($letter-spacing, p);
+        text-align: center;
+        line-height: map-get($line-height , p);
+        z-index: 3;
     }
 }
 
