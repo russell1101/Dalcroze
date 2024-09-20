@@ -44,6 +44,10 @@ body {
     justify-content: space-between;
     align-items: center;
     color: $light;
+    background-color: transparent;
+    /* 預設透明 */
+    transition: background-color 0.5s ease;
+    /* 背景顏色變換 */
 
     img {
         width: 120px;
@@ -61,6 +65,14 @@ body {
                 a {
                     font-size: map-get($font-size , s);
                     color: $light;
+                    text-decoration: none;
+                    padding-bottom: 5px;
+                    transition: border-bottom 0.3s ease;
+                }
+
+                a.avtive {
+                    border-bottom: 2px solid #333;
+                    /* 當前 section 的底線樣式 */
                 }
             }
         }

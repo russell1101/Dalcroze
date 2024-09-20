@@ -33,16 +33,9 @@ window.addEventListener('scroll', function () {
 // 滑入動畫
 $('.smoove').smoove({
     // 因為此套件設定offset表示離底部高度 設定冒出視窗高度40%後出現  每個套件可能設定不同
-    offset: '20%'
+    offset: '20%',
+    speed: 3000,   // 或調整動畫速度，讓過渡效果更平滑
 });
-
-// $('.smoove-z').smoove({
-//     // -500會先後退500 然後往前 反之500先前在後退
-//     moveZ: '-500px',
-//     rotateX: '90deg',
-//     // y軸設定是為了在翻轉時不要蓋到上面的div 所以讓元素下移
-//     moveY: '250px'
-// });
 
 // 換頁與 gotop
 $(function () {
@@ -56,15 +49,14 @@ $(function () {
         $('html,body').animate({ scrollTop: pos.top + offset }, 1000);
     });
 
-    // 滑動至頂
     $('#gotop').click(function () {
-        // 會寫html,body 是因為不同瀏覽器的卷軸可能寫在其中之一的位置 所以兩個都寫才能確保都吃到
-        $('html,body').animate({ scrollTop: 0 }, 1000);
+        // 停止所有當前的動畫，並立刻清除已經排隊的動畫
+        $('html, body').stop().animate({ scrollTop: 0 }, 1000);
     });
 
     $('#home').click(function () {
-        // 會寫html,body 是因為不同瀏覽器的卷軸可能寫在其中之一的位置 所以兩個都寫才能確保都吃到
-        $('html,body').animate({ scrollTop: 0 }, 1000);
+        // 停止所有當前的動畫，並立刻清除已經排隊的動畫
+        $('html, body').stop().animate({ scrollTop: 0 }, 1000);
     });
 
     // 至頂按鈕淡出淡入
@@ -78,7 +70,7 @@ $(function () {
 })
 
 
-
+// 輪播套件語法
 var swiper = new Swiper('.swiper-container', {
     slidesPerView: 3, // 一次顯示3個卡片
     spaceBetween: 10, // 卡片之間的間隔
@@ -110,34 +102,53 @@ var swiper = new Swiper('.swiper-container', {
     },
     slideToClickedSlide: true, // 點擊卡片時跳轉到該卡片
 
-    // 修正問題的重點：確保左右出現卡片數量一致
     loopAdditionalSlides: 1, // 確保額外的循環卡片數量，避免漏顯
     loopedSlides: 3, // 指定循環的卡片數量，與 slidesPerView 保持一致
 });
 
 
 window.addEventListener('scroll', function () {
+    const sections = document.querySelectorAll('section'); // 獲取所有 section
     const topbar = document.getElementById('topbar');
-    const scrollY = window.scrollY; // 獲取滾動距離
-    const triggerHeight = 200; // 設定在 200px 時改變顏色
+    const menuLinks = document.querySelectorAll('.menu a'); // 獲取 menu 的所有連結
+    const scrollPosition = window.scrollY + 100; // 當前滾動位置，增加 100 以考慮視窗的 offset
 
-    if (scrollY > triggerHeight) {
-        // 滾動超過指定高度時改變背景顏色
-        topbar.style.backgroundColor = 'rgba(0, 0, 0, 0.8)'; // 深色背景
-        topbar.style.transition = 'background-color 0.3s ease'; // 漸變效果
+    let activeSection = ''; // 儲存當前可見的 section 的 id
+
+    // 如果滾動位置小於 100，回到 header，讓 topbar 背景透明
+    if (scrollPosition < 1000) {
+        topbar.style.backgroundColor = 'transparent';
     } else {
-        // 滾動回到上方時恢復背景顏色
-        topbar.style.backgroundColor = 'transparent'; // 透明背景
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+
+            // 判斷滾動位置是否在該 section 內
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                activeSection = section.getAttribute('id');
+
+                // 根據 section 設定不同的 topbar 背景色
+                if (activeSection === 'faith') {
+                    topbar.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+                } else if (activeSection === 'chairman') {
+                    topbar.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                } else if (activeSection === 'course') {
+                    topbar.style.backgroundColor = 'transparent';
+                } else if (activeSection === 'activity') {
+                    topbar.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+                } else {
+                    topbar.style.backgroundColor = 'rgba(0, 0, 0, 1)';
+                }
+            }
+        });
     }
 
-    // 偵測背景顏色為淺色時，自動變深色
-    const backgroundColor = window.getComputedStyle(document.body).backgroundColor;
-    const rgb = backgroundColor.match(/\d+/g);
-    const brightness = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255; // 計算亮度
-
-    if (brightness > 0.5) { // 如果背景顏色明亮
-        topbar.style.backgroundColor = 'rgba(0, 0, 0, 0.8)'; // 變為深色
-    } else {
-        topbar.style.backgroundColor = 'transparent'; // 保持透明
-    }
+    // 依據 activeSection 設定相應的底線樣式
+    menuLinks.forEach(link => {
+        if (link.getAttribute('href').includes(activeSection)) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
 });

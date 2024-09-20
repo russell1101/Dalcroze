@@ -74,6 +74,10 @@ body {
   justify-content: space-between;
   align-items: center;
   color: #f1f1f1;
+  background-color: transparent;
+  /* 預設透明 */
+  transition: background-color 0.5s ease;
+  /* 背景顏色變換 */
 }
 #topbar img {
   width: 120px;
@@ -88,6 +92,13 @@ body {
 #topbar #nav ul li a {
   font-size: 18px;
   color: #f1f1f1;
+  text-decoration: none;
+  padding-bottom: 5px;
+  transition: border-bottom 0.3s ease;
+}
+#topbar #nav ul li a.avtive {
+  border-bottom: 2px solid #333;
+  /* 當前 section 的底線樣式 */
 }
 
 header {
