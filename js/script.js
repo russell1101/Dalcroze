@@ -39,6 +39,9 @@ window.addEventListener('scroll', function () {
     // 當滾動位置在 header 區域時，移除所有 active 樣式
     if (scrollPosition < headerHeight) {
         topbar.style.backgroundColor = 'transparent'; // 背景透明
+        menuLinks.forEach(link => {
+            link.classList.remove('active'); // 移除 active 樣式
+        });
     } else {
         // 超過 header 之後，開始判斷當前的 active section
         sections.forEach(section => {
@@ -77,11 +80,40 @@ window.addEventListener('scroll', function () {
 
 
 
-// 滑入動畫
-$('.smoove').smoove({
-    // 因為此套件設定offset表示離底部高度 設定冒出視窗高度40%後出現  每個套件可能設定不同
-    offset: '20%',
-    speed: 3000,   // 或調整動畫速度，讓過渡效果更平滑
+function setSmooveOffset() {
+    // 測試輸出視窗寬度
+    console.log('Window Width:', $(window).width());
+
+    // 清除之前的 smoove 效果，防止重新初始化衝突
+    $('.smoove').trigger('unsmoove');
+
+    var windowWidth = $(window).width();
+
+    if (windowWidth < 768) {
+        console.log('觸發成功');
+        $('.smoove').smoove({
+            offset: '5%',  // 小螢幕下的較低偏移值
+            speed: 3000
+        });
+        // 強制觸發 scroll 事件，讓動畫生效
+        $(window).trigger('scroll');
+    } else {
+        console.log('Initializing Smoove for >=768px');
+        $('.smoove').smoove({
+            offset: '20%', // 桌面裝置的 offset
+            speed: 3000
+        });
+    }
+}
+
+// 在頁面加載時設定 smoove
+$(document).ready(function () {
+    setSmooveOffset();
+
+    // 在視窗調整大小時，重新設定 offset
+    $(window).resize(function () {
+        setSmooveOffset();
+    });
 });
 
 // 換頁與 gotop

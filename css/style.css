@@ -57,7 +57,7 @@ body {
   width: 100%;
   height: 200vh;
   z-index: -1;
-  background-image: linear-gradient(to bottom, rgba(193, 193, 193, 0.6) 0%, rgba(193, 193, 193, 0.6) 80%, #E1DCD9 100%), url(../img/stonebg.jpg);
+  background-image: linear-gradient(to bottom, rgba(193, 193, 193, 0.6) 0%, rgba(193, 193, 193, 0.6) 80%, #e1dcd9 100%), url(../img/stonebg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -157,6 +157,7 @@ header h3 {
   margin: 0 75px;
   width: 100%;
   padding: 50px;
+  justify-content: space-between;
 }
 #faith .faith_content .text {
   width: 50%;
@@ -174,13 +175,17 @@ header h3 {
 }
 #faith .faith_content .img {
   width: 50%;
+  max-width: 50%;
 }
 #faith .faith_content .img .triangle-container {
   position: relative;
-  width: 500px;
-  min-width: 450px;
+  width: 30vw;
+  max-width: 500px;
+  min-width: 418px;
   /* Fixed width */
-  height: 450px;
+  height: 30vw;
+  max-height: 450px;
+  min-height: 424px;
   /* Fixed height */
 }
 #faith .faith_content .img .triangle-container .circle {
@@ -236,18 +241,38 @@ header h3 {
   bottom: -1450px;
   width: 2500px;
 }
+@media (max-width: 1020px) {
+  #faith .faith_content .text {
+    width: 300px;
+  }
+}
+@media (max-width: 770px) {
+  #faith .faith_content {
+    height: 100%;
+    margin-top: 10vw;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  #faith .faith_content .text {
+    width: 100%;
+  }
+  #faith .faith_content .text h1 {
+    margin-bottom: 10px;
+  }
+}
 
 #chairman {
   border-radius: 0 0 30px 30px;
   height: 150vh;
-  background-color: #E1DCD9;
+  background-color: #e1dcd9;
   position: relative;
   z-index: -1;
+  overflow: hidden;
 }
 #chairman .colorblock {
   position: absolute;
   top: 33vh;
-  left: 30%;
+  left: 27%;
   width: 900px;
   height: 700px;
   z-index: -1;
@@ -312,7 +337,7 @@ header h3 {
 #course .colorRcorner {
   position: absolute;
   top: -10vh;
-  right: -8%;
+  right: -9%;
   width: 900px;
   height: 500px;
   z-index: -1;
@@ -322,6 +347,7 @@ header h3 {
   width: 100%;
   justify-content: space-between;
   padding: 0 200px;
+  gap: 10px;
 }
 #course .course_content .mycard {
   cursor: pointer;
@@ -410,7 +436,7 @@ header h3 {
 }
 
 #activity {
-  background-color: #D8D8D8;
+  background-color: #d8d8d8;
   height: 150vh;
   position: relative;
   overflow: hidden;
